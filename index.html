@@ -92,6 +92,13 @@ h1,h2,h3,h4{font-family:var(--f-display);letter-spacing:-.02em;text-wrap:balance
 .actions{display:flex;flex-wrap:wrap;gap:10px}
 
 /* home */
+.crow{display:grid!important;grid-template-columns:1fr 1fr;gap:8px}
+.crow .btn{justify-content:center;white-space:nowrap;padding:9px 10px}
+.crow .btn:last-child{grid-column:1/-1;background:var(--cta);color:var(--cta-ink);border-color:var(--cta)}
+.crow .btn:first-child:not(:last-child){background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (min-width:901px){.prod>div:first-child{position:sticky;top:96px}}
+#pMeas small{white-space:nowrap;letter-spacing:.04em}
+
 .rx .radios{display:grid;gap:8px;margin-bottom:10px}
 .rxin{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);margin-bottom:6px}
 .rxt{width:100%;border-collapse:collapse;margin-bottom:10px}.rxt th{font-size:.74rem;font-weight:700;text-align:left;color:var(--muted);padding:0 6px 6px 0;white-space:nowrap}
@@ -521,7 +528,7 @@ footer{max-width:1200px;margin:0 auto;padding-block:40px 36px;border-top:1px sol
 <section class="page" id="p-shop" hidden>
   <p class="eyebrow">Gọng kính</p>
   <h1 class="h1" style="font-size:clamp(1.9rem,4vw,2.8rem)">Chọn gọng hợp phong cách của bạn.</h1>
-  <p class="sub">Lọc theo dáng, chất liệu, màu và cỡ tròng. Bộ sưu tập Thu Sang: 50 mẫu gọng cận chia 4 dòng theo 3 tầng giá: Cốm Non (450–690k), Heo May và Nắng Hanh (790k–1,19 triệu), Hoàng Hôn (1,29–1,79 triệu). Số đo theo thứ tự rộng tròng □ cầu mũi, chiều dài càng (mm).</p>
+  <p class="sub">Lọc theo dáng, chất liệu, màu và cỡ tròng. Bộ sưu tập Thu Sang: 50 mẫu gọng cận chia 4 dòng theo 3 tầng giá: Cốm Non (450–690k), Heo May và Nắng Hanh (790k–1,19 triệu), Hoàng Hôn (1,29–1,79 triệu). Số đo ghi theo thứ tự rộng tròng – cầu mũi – dài càng, đơn vị mm.</p>
   <div class="filters2">
     <div class="field wide"><p class="lab">Dáng gọng</p><div class="tiles" id="fShape"></div></div>
     <div class="field"><p class="lab">Chất liệu</p><div class="tiles" id="fMat"></div></div>
@@ -575,7 +582,7 @@ footer{max-width:1200px;margin:0 auto;padding-block:40px 36px;border-top:1px sol
       <div class="acc">
         <h3>Số đo</h3>
         <div class="meas" id="pMeas"></div>
-        <details class="guide"><summary>Cách đọc số đo</summary><p>Ví dụ 48□21 145: mỗi tròng rộng 48 mm, cầu mũi (khoảng cách giữa hai tròng) 21 mm, càng kính dài 145 mm. Dọc tròng là chiều cao tròng; tổng ngang là bề rộng cả mặt gọng, theo số đo của nhà sản xuất. Size hợp thường nằm trong khoảng ±4 mm so với tổng ngang gọng bạn đang đeo.</p></details>
+        <details class="guide"><summary>Cách đọc số đo</summary><p>Ví dụ 48-21-145: mỗi tròng rộng 48 mm, cầu mũi (khoảng cách giữa hai tròng) 21 mm, càng kính dài 145 mm. Dọc tròng là chiều cao tròng; tổng ngang là bề rộng cả mặt gọng, theo số đo của nhà sản xuất. Size hợp thường nằm trong khoảng ±4 mm so với tổng ngang gọng bạn đang đeo.</p></details>
       </div>
       <div class="acc">
         <h3>Chất liệu</h3>
@@ -618,7 +625,7 @@ footer{max-width:1200px;margin:0 auto;padding-block:40px 36px;border-top:1px sol
         <div class="panel2" id="analysis" hidden>
           <h3>Kết quả từ ảnh của bạn</h3>
           <div class="kv"><span>Dáng mặt (ước lượng)</span><span id="aShape">—</span></div>
-          <div class="kv"><span>Bề ngang mặt (ước lượng)</span><span id="aWidth">—</span></div>
+          <div class="kv"><span>Bề ngang mặt ở thái dương (ước lượng)</span><span id="aWidth">—</span></div>
           <div class="kv"><span>Gọng đang thử</span><span id="aFit">—</span></div>
           <p class="fine">Số đo ước lượng từ ảnh, quy đổi theo đường kính mống mắt trung bình (11,7 mm), có thể lệch vài mm. Chỉ để tham khảo, không thay cho đo mắt và đo gọng.</p>
         </div>
@@ -637,7 +644,7 @@ footer{max-width:1200px;margin:0 auto;padding-block:40px 36px;border-top:1px sol
       <div class="field" id="detail">
         <p class="lab">Số đo <b id="dMat"></b></p>
         <div class="meas" id="meas"></div>
-        <details class="guide"><summary>Cách đọc số đo</summary><p>Ví dụ 48□21 145: mỗi tròng rộng 48 mm, cầu mũi (khoảng cách giữa hai tròng) 21 mm, càng kính dài 145 mm. Dọc tròng là chiều cao tròng; tổng ngang là bề rộng cả mặt gọng, theo số đo của nhà sản xuất. Size hợp thường nằm trong khoảng ±4 mm so với tổng ngang gọng bạn đang đeo.</p></details>
+        <details class="guide"><summary>Cách đọc số đo</summary><p>Ví dụ 48-21-145: mỗi tròng rộng 48 mm, cầu mũi (khoảng cách giữa hai tròng) 21 mm, càng kính dài 145 mm. Dọc tròng là chiều cao tròng; tổng ngang là bề rộng cả mặt gọng, theo số đo của nhà sản xuất. Size hợp thường nằm trong khoảng ±4 mm so với tổng ngang gọng bạn đang đeo.</p></details>
       </div>
       <div class="field"><p class="lab">Gọng tương tự</p><div class="sim" id="sim"></div></div>
       <div class="field" id="view360" hidden>
@@ -955,7 +962,7 @@ function fitH(pts,f){
 function photoOf(i){var f=FRAMES[i],c=f&&f.colors[(S&&S.ci&&S.ci[i])||0];return c&&c.img?c.img:null;}
 function thumbOf(i,w,h){var u=photoOf(i);if(!u)return copyCanvas(cardRefs[i]&&cardRefs[i].cv,w,h);var im=document.createElement('img');im.src=u;im.alt=FRAMES[i].name;im.loading='lazy';im.className='ph';im.width=w;im.height=Math.round(w*0.75);return im;}
 
-function sizeStr(f){return f.w+'□'+f.b+' '+f.t;}
+function sizeStr(f){return f.w+'-'+f.b+'-'+f.t+' mm';}
 function rimOf(f){return f.mat==='acetate'?4.4:1.8;}
 function frameWidth(f){return f.fw||(2*f.w+f.b+2*rimOf(f)+8);} /* +8 mm: hinge allowance, as in a typical front width */
 
@@ -1365,7 +1372,11 @@ function classifyFace(mesh){
 var FIT_SHAPES={'Oval':['rect','cat','avi','wayf'],'Tròn':['rect','hex','cat','wayf'],'Vuông':['round','oval','avi'],'Dài':['round','oval','cat'],'Trái tim':['oval','round','avi']};
 function analyze(mesh,fit){
   var d3=function(a,b){return Math.hypot(mesh[a][0]-mesh[b][0],mesh[a][1]-mesh[b][1],mesh[a][2]-mesh[b][2]);};
-  S.analysis={shape:classifyFace(mesh),widthMM:d3(234,454)/fit.s};
+  /* bề ngang mặt tại thái dương (127–356), nơi càng kính đi qua; lấy trung vị nhiều lần đo để ổn định khi dùng camera */
+  var wNow=d3(127,356)/fit.s;
+  if(!S.wHist||!live.on)S.wHist=[];S.wHist.push(wNow);if(S.wHist.length>15)S.wHist.shift();
+  var hs=S.wHist.slice().sort(function(a,b){return a-b;}),wMed=hs[Math.floor(hs.length/2)];
+  S.analysis={shape:classifyFace(mesh),widthMM:wMed};
   $('#analysis').hidden=false;
   $('#aShape').textContent=S.analysis.shape;
   $('#aWidth').textContent='≈ '+Math.round(S.analysis.widthMM)+' mm';
@@ -1373,9 +1384,11 @@ function analyze(mesh,fit){
 }
 function updateFit(){
   if(!S.analysis)return;
-  var f=curFrame(),r=frameWidth(f)/S.analysis.widthMM,txt;
-  txt=r<0.84?'Hơi nhỏ so với mặt':r>0.98?'Hơi rộng so với mặt':'Khá vừa';
-  $('#aFit').textContent=f.name+' ('+Math.round(frameWidth(f))+' mm) · '+txt;
+  var f=curFrame(),fw=frameWidth(f),dw=fw-S.analysis.widthMM,txt;
+  /* gọng vừa khi tổng ngang xấp xỉ bề ngang thái dương: chênh trong khoảng −6 đến +12 mm */
+  txt=dw<-6?'Hơi nhỏ so với mặt':dw>12?'Hơi rộng so với mặt':'Khá vừa';
+  var dtx=Math.abs(dw)<1?'bằng mặt':(dw>0?'rộng hơn mặt ':'hẹp hơn mặt ')+Math.round(Math.abs(dw))+' mm';
+  $('#aFit').textContent=f.name+' ('+Math.round(fw)+' mm, '+dtx+') · '+txt;
   var pf=$('#pFit');if(pf)pf.textContent='Với ảnh của bạn: '+txt.toLowerCase()+' (ước lượng).';
 }
 function prepPhoto(img){
@@ -1466,7 +1479,7 @@ function liveTick(h){
       if(fit&&isFinite(fit.s)&&fit.s>0){
         S.fit=fit;live.frames++;
         if(S.aiState!=='ok'){setAI('ok','Camera · AI đang theo dõi');setHint('Kính bám theo khuôn mặt trực tiếp. Nhìn thẳng vào camera, đủ sáng. Dùng thanh trượt để chỉnh cao thấp, kích cỡ.');}
-        if(!S.analysis||live.frames%90===0)analyze(m,fit);
+        if(!S.analysis||live.frames%20===0)analyze(face.mesh,fit); /* mesh gốc: đủ 478 điểm (mesh làm mượt chỉ giữ vài điểm) */
       }
     }else{
       live.lost++;
@@ -1903,7 +1916,7 @@ function renderProduct(){
     b.addEventListener('click',function(){S.ci[i]=k;S.gi=null;rebuild();if(cardRefs[i])renderPreview(i,cardRefs[i].cv);render();renderProduct();});
     sw.appendChild(b);
   });
-  var cells=[['Ngang tròng (A)',f.w],['Dọc tròng (B)',f.h],['Cầu mũi (C)',f.b],['Tổng ngang (D)',Math.round(frameWidth(f))],['Dài càng (E)',f.t]];
+  var cells=[['Rộng tròng (A)',f.w],['Dọc tròng (B)',f.h],['Cầu mũi (C)',f.b],['Tổng ngang (D)',Math.round(frameWidth(f))],['Dài càng (E)',f.t]];
   $('#pMeas').innerHTML=cells.map(function(c){return'<div><small>'+c[0]+'</small><b>'+c[1]+' mm</b></div>';}).join('');
   $('#pMat').textContent=(f.matTxt||MATS[f.mat])+(f.col?' · Dòng '+f.col+' (bộ sưu tập Thu Sang)':'')+(f.shapeTxt?' · Dáng '+f.shapeTxt.toLowerCase():'')+'.';
   var pr0=$('#pRef');if(pr0)pr0.remove();
@@ -2178,7 +2191,7 @@ window.__framix={fitPose:fitPose,REF:REF,state:S,setTab:setTab,pick:pick};
 (function(){
   var FAQ=[
     {k:['lắp tròng','tròng cận','nhập độ','đơn kính','tròng kính','pd','đồng tử'],q:'Mua gọng có lắp tròng cận không?',a:'Có. Ở trang sản phẩm, chọn **Gọng + tròng cận theo độ của bạn** rồi nhập độ cận, độ loạn và trục cho từng mắt (thêm PD nếu biết). Giá tròng Framix báo khi gọi xác nhận đơn. Nếu chỉ cần gọng, chọn **Chỉ mua gọng**.'},
-    {k:['đọc số đo','số đo','□','48□','kích thước gọng','a□c'],q:'Cách đọc số đo gọng?',a:'Số đo gọng ghi dạng A□C E, ví dụ 48□21 145: tròng rộng 48 mm (A), cầu mũi 21 mm (C), càng dài 145 mm (E). Trang sản phẩm Framix còn ghi thêm dọc tròng (B) và tổng chiều ngang mặt gọng (D).'},
+    {k:['đọc số đo','số đo','□','48□','48-21','kích thước gọng','a□c','a-c-e'],q:'Cách đọc số đo gọng?',a:'Số đo gọng ghi dạng A-C-E, ví dụ 48-21-145: tròng rộng 48 mm (A), cầu mũi 21 mm (C), càng dài 145 mm (E). Trang sản phẩm Framix còn ghi thêm dọc tròng (B) và tổng chiều ngang mặt gọng (D).'},
     {k:['chọn cỡ','cỡ gọng','size','vừa mặt','rộng','hẹp'],q:'Chọn cỡ gọng thế nào cho vừa?',a:'Cách nhanh nhất: đo tổng chiều ngang gọng bạn đang đeo vừa, rồi chọn gọng có tổng ngang (D) chênh trong khoảng ±4 mm. Bạn cũng có thể dùng Thử kính ảo: AI ước lượng bề ngang mặt và báo gọng rộng hay hẹp (chỉ để tham khảo, có thể lệch vài mm).'},
     {k:['mũi thấp','sống mũi','tuột','trượt','asian','châu á'],q:'Sống mũi thấp nên chọn gọng nào?',a:'Nên chọn gọng có cầu mũi 16–20 mm và càng 135–145 mm để gọng ít trượt, ngồi cao hơn trên mũi. Ở trang Gọng kính, chọn bộ lọc "Dáng mũi → Hợp sống mũi thấp" để xem các mẫu đạt cả hai tiêu chí.',nose:1},
     {k:['thử kính','thử ảo','camera','ảnh','ai thử','virtual'],q:'Thử kính ảo hoạt động thế nào?',a:'Vào trang Thử kính ảo, tải ảnh chân dung hoặc bật camera. AI tìm 478 điểm trên khuôn mặt rồi đặt ảnh thật của gọng lên mặt, đúng góc và kích thước (tính từ đường kính mống mắt trung bình 11,7 mm). Ảnh và camera được xử lý ngay trong trình duyệt, không gửi lên máy chủ. Kết quả chỉ để tham khảo, không thay cho đo mắt và đo gọng.'},
@@ -2197,7 +2210,7 @@ window.__framix={fitPose:fitPose,REF:REF,state:S,setTab:setTab,pick:pick};
   function fmtMsg(t){ /* escape, then allow [text](#hash) links and **bold** */
     var h=esc(t).replace(/\[([^\]]{1,80})\]\((#[a-z0-9-]{1,60})\)/gi,'<a href="$2">$1</a>').replace(/\*\*([^*]{1,120})\*\*/g,'<b>$1</b>');
     return h.replace(/\n/g,'<br>');}
-  function frameLine(f){return '['+f.name+']('+'#gong-'+f.code.toLowerCase()+') · '+fmtP(f.price)+' · '+SHAPES[f.shape]+' · '+f.w+'□'+f.b+' '+f.t;}
+  function frameLine(f){return '['+f.name+']('+'#gong-'+f.code.toLowerCase()+') · '+fmtP(f.price)+' · '+SHAPES[f.shape]+' · '+f.w+'-'+f.b+'-'+f.t+' mm';}
   function catalog(){
     var fr=FRAMES.map(function(f){return [f.name,'#gong-'+f.code.toLowerCase(),f.price,SHAPES[f.shape],f.matTxt||MATS[f.mat],'A'+f.w+' B'+f.h+' C'+f.b+' D'+f.fw+' E'+f.t,f.asian?'hợp sống mũi thấp':'',f.colors.map(function(c){return c.n+(c.out?' (hết)':'');}).join('/')].join(' | ');}).join('\n');
     var ln=LENS.map(function(L){return [L.name,L.kind==='clear'?'trong suốt':'lens màu '+L.color,L.price+'đ/chiếc',L.cycle,L.dia?'DIA '+L.dia:'',L.gdia?'GDIA '+L.gdia:'',L.water?'ẩm '+L.water:'',L.mat||'',L.power].filter(Boolean).join(' | ');}).join('\n');
